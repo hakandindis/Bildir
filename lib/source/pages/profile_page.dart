@@ -42,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Future getImage() async {
+  Future getImage()          async {
     var pickImage = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
