@@ -168,7 +168,7 @@ class _AddPostPageState extends State<AddPostPage> {
                             child: TextButton(
                               onPressed: () {
                                 Navigator.pushReplacementNamed(
-                                    context, AppRoutes.homePage,
+                                    context, AppRoutes.mainPage,
                                     arguments: {
                                       "file": _pickedImage,
                                       "description":

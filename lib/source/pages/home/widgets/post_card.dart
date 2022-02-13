@@ -28,8 +28,8 @@ class _PostCardState extends State<PostCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.5,
+      //width: MediaQuery.of(context).size.width,
+      // height: MediaQuery.of(context).size.height * 0.5,
       decoration: BoxDecoration(
         color: Colors.grey[300],
         borderRadius: BorderRadius.circular(12),
@@ -50,26 +50,91 @@ class _PostCardState extends State<PostCard> {
           ),
         ],
       ),
-      child: Stack(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           widget.imageFile != null
               ? Image.file(widget.imageFile!,
-                  fit: BoxFit.cover, height: 200, width: 200)
-              : Image.asset(widget.imagePath!,
-                  fit: BoxFit.cover, height: 200, width: 200),
-          // CircleAvatar(backgroundImage: AssetImage(widget.imagePath!)),
-          Row(
-            children: [
-              Text(
-                widget.description!,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+                  fit: BoxFit.fitWidth, height: 200, width: 200)
+              : Container(
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        topRight: Radius.circular(12)),
+                    image: DecorationImage(
+                      image: AssetImage("img/${widget.imagePath!}"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  // child: Image.asset(
+                  //   "img/${widget.imagePath!}",
+                  //   fit: BoxFit.cover,
+                  //   height: MediaQuery.of(context).size.height * 0.5,
+                  // ),
                 ),
-              ),
-              Text(widget.tags![widget.index!]),
-            ],
+          // CircleAvatar(backgroundImage: AssetImage(widget.imagePath!)),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(
+                      Icons.remove_red_eye_outlined,
+                      size: 30,
+                    ),
+                    Icon(
+                      Icons.do_disturb_on_outlined,
+                      size: 30,
+                    ),
+                  ],
+                ),
+                Text(
+                  widget.description!,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(widget.tags![0] + " "),
+                    Spacer(),
+                    Text(widget.tags![1] + " "),
+                    Spacer(),
+                    Text(widget.tags![2] + " "),
+                    Spacer(),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // IconButton(
+                      //   onPressed: () {},
+                      //   icon: Icon(Icons.access_alarms, size: 30),
+                      // ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.location_on_outlined, size: 30),
+                      ),
+                      // IconButton(
+                      //   onPressed: () {},
+                      //   icon: Icon(Icons.accessibility_outlined, size: 30),
+                      // ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

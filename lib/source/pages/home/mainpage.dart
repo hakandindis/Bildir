@@ -5,38 +5,35 @@ import 'package:react/source/pages/home/home_page.dart';
 import 'package:react/source/pages/profile_page.dart';
 import 'package:react/source/router/route.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
 
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _ProfilePageState extends State<ProfilePage>
-    with TickerProviderStateMixin {
+class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   late int currentIndex;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    currentIndex = 1;
+    currentIndex = 0;
   }
 
   void onTap(int index) {
     currentIndex = index;
-
-    if (currentIndex == 1) {
-      //do nothing
+    if (currentIndex == 0) {
     } else {
-      Navigator.of(context).pushNamed(AppRoutes.mainPage);
+      Navigator.of(context).pushNamed(AppRoutes.profilePage);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(
-      length: 2,
+      length: 4,
       vsync: this,
     );
 
@@ -78,11 +75,24 @@ class _ProfilePageState extends State<ProfilePage>
     return Column(
       //crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SizedBox(height: 100),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
+          child: TextField(
+            //controller: _searchController,
+            decoration: InputDecoration(
+              //icon: Icon(Icons.search),
+              prefixIcon: Icon(Icons.search),
+              hintText: "search",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+        ),
         Container(
           //padding: EdgeInsets.only(top: 10),
           child: Align(
-            alignment: Alignment.center,
+            alignment: Alignment.centerLeft,
             child: TabBar(
               labelPadding: const EdgeInsets.only(left: 20, right: 20),
               controller: _tabController,
@@ -92,8 +102,10 @@ class _ProfilePageState extends State<ProfilePage>
               isScrollable: true,
               indicator: CircleTabIndicator(color: Colors.redAccent, radius: 4),
               tabs: [
-                Tab(text: "Aktif Sorunlar"),
-                Tab(text: "Çözülmüş Sorunlar"),
+                Tab(text: "Önerilenler"),
+                Tab(text: "Çevrendekiler"),
+                Tab(text: "İlçendekiler"),
+                Tab(text: "Şehrindekiler"),
               ],
             ),
           ),
@@ -107,6 +119,8 @@ class _ProfilePageState extends State<ProfilePage>
             child: TabBarView(
               controller: _tabController,
               children: [
+                HomePage(),
+                HomePage(),
                 HomePage(),
                 HomePage(),
               ],
@@ -148,90 +162,3 @@ class _CirclePainter extends BoxPainter {
     canvas.drawCircle(offset + circleOffset, radius, _paint);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // ignore_for_file: prefer_const_constructors
-
-// import 'dart:io';
-
-// import 'package:flutter/material.dart';
-// import 'package:image_picker/image_picker.dart';
-
-// class ProfilePage extends StatefulWidget {
-//   const ProfilePage({Key? key}) : super(key: key);
-
-//   @override
-//   _ProfilePageState createState() => _ProfilePageState();
-// }
-
-// class _ProfilePageState extends State<ProfilePage> {
-//   File? _pickedImage;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         crossAxisAlignment: CrossAxisAlignment.center,
-//         children: [
-//           GestureDetector(
-//             onTap: getImage,
-//             child: CircleAvatar(
-//               radius: 40,
-//               backgroundColor: Colors.grey,
-//               backgroundImage:
-//                   _pickedImage != null ? FileImage(_pickedImage!) : null,
-//               child: _pickedImage != null
-//                   ? Container()
-//                   : const Icon(
-//                       Icons.photo,
-//                       color: Colors.white,
-//                     ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-
-//   Future getImage()          async {
-//     var pickImage = await ImagePicker().pickImage(
-//       source: ImageSource.gallery,
-//     );
-
-//     setState(() {
-//       _pickedImage = File(pickImage!.path);
-//     });
-//   }
-// }

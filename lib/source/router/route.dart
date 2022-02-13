@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:react/source/pages/add_post_page.dart';
 import 'package:react/source/pages/home/home_page.dart';
-import 'package:react/source/pages/main/main_page.dart';
+import 'package:react/source/pages/home/mainpage.dart';
 import 'package:react/source/pages/profile_page.dart';
 import 'package:react/source/pages/upload_img_page.dart';
 
