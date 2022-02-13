@@ -12,6 +12,8 @@ class PostCard extends StatefulWidget {
     this.description,
     this.tags,
     this.index,
+    this.like,
+    this.dislike,
   }) : super(key: key);
 
   File? imageFile;
@@ -19,6 +21,8 @@ class PostCard extends StatefulWidget {
   String? description;
   List<String>? tags;
   int? index;
+  int? like;
+  int? dislike;
 
   @override
   _PostCardState createState() => _PostCardState();
@@ -82,13 +86,25 @@ class _PostCardState extends State<PostCard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
-                      Icons.remove_red_eye_outlined,
-                      size: 30,
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.remove_red_eye_outlined,
+                          size: 30,
+                        ),
+                        SizedBox(width: 5),
+                        Text(widget.like.toString()),
+                      ],
                     ),
-                    Icon(
-                      Icons.do_disturb_on_outlined,
-                      size: 30,
+                    Row(
+                      children: [
+                        Text(widget.dislike.toString()),
+                        SizedBox(width: 5),
+                        Icon(
+                          Icons.do_disturb_on_outlined,
+                          size: 30,
+                        ),
+                      ],
                     ),
                   ],
                 ),

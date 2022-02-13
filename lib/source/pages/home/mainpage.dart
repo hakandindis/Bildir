@@ -2,6 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:react/source/pages/home/home_page.dart';
+import 'package:react/source/pages/home/tabs/cevre_tab.dart';
+import 'package:react/source/pages/home/tabs/ilce_tab.dart';
+import 'package:react/source/pages/home/tabs/oneri_tab.dart';
+import 'package:react/source/pages/home/tabs/sehir_tab.dart';
 import 'package:react/source/pages/profile_page.dart';
 import 'package:react/source/router/route.dart';
 
@@ -25,7 +29,10 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   void onTap(int index) {
     currentIndex = index;
     if (currentIndex == 0) {
-    } else {
+      // Navigator.of(context).pushNamed(AppRoutes.mainPage);
+    } else if (currentIndex == 1) {
+      Navigator.of(context).pushNamed(AppRoutes.searchPage);
+    } else if (currentIndex == 2) {
       Navigator.of(context).pushNamed(AppRoutes.profilePage);
     }
   }
@@ -42,6 +49,17 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
   Scaffold homePageBuild(TabController _tabController, BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0.1,
+        backgroundColor: Colors.grey[100],
+        title: Padding(
+          padding: const EdgeInsets.only(left: 95),
+          child: Text(
+            "Düzelt",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ),
       body: homePageBuilder(_tabController),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -65,6 +83,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         // ignore: prefer_const_literals_to_create_immutables
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: ""),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
         ],
       ),
@@ -75,22 +94,22 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     return Column(
       //crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
-          child: TextField(
-            //controller: _searchController,
-            decoration: InputDecoration(
-              //icon: Icon(Icons.search),
-              prefixIcon: Icon(Icons.search),
-              hintText: "search",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-          ),
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+        //   child: TextField(
+        //     //controller: _searchController,
+        //     decoration: InputDecoration(
+        //       //icon: Icon(Icons.search),
+        //       prefixIcon: Icon(Icons.search),
+        //       hintText: "search",
+        //       border: OutlineInputBorder(
+        //         borderRadius: BorderRadius.circular(20),
+        //       ),
+        //     ),
+        //   ),
+        // ),
         Container(
-          //padding: EdgeInsets.only(top: 10),
+          padding: EdgeInsets.only(top: 10, bottom: 10),
           child: Align(
             alignment: Alignment.centerLeft,
             child: TabBar(
@@ -119,10 +138,14 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             child: TabBarView(
               controller: _tabController,
               children: [
-                HomePage(),
-                HomePage(),
-                HomePage(),
-                HomePage(),
+                // HomePage(),
+                // HomePage(),
+                // HomePage(),
+                // HomePage(),
+                OneriTab(),
+                CevreTab(),
+                IlceTab(),
+                SehirTab(),
               ],
             ),
           ),

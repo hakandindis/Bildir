@@ -1,8 +1,8 @@
-// ignore_for_file: unused_local_variable, prefer_const_constructors
+// ignore_for_file: unused_local_variable, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:react/source/pages/home/home_page.dart';
-import 'package:react/source/pages/profile_page.dart';
+import 'package:react/source/pages/home/tabs/aktif_tab.dart';
+import 'package:react/source/pages/home/tabs/cozum_tab.dart';
 import 'package:react/source/router/route.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -18,18 +18,18 @@ class _ProfilePageState extends State<ProfilePage>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    currentIndex = 1;
+    currentIndex = 2;
   }
 
   void onTap(int index) {
     currentIndex = index;
-
-    if (currentIndex == 1) {
-      //do nothing
-    } else {
+    if (currentIndex == 0) {
       Navigator.of(context).pushNamed(AppRoutes.mainPage);
+    } else if (currentIndex == 1) {
+      Navigator.of(context).pushNamed(AppRoutes.searchPage);
+    } else if (currentIndex == 2) {
+      // Navigator.of(context).pushNamed(AppRoutes.profilePage);
     }
   }
 
@@ -45,6 +45,17 @@ class _ProfilePageState extends State<ProfilePage>
 
   Scaffold homePageBuild(TabController _tabController, BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0.1,
+        backgroundColor: Colors.grey[100],
+        title: Padding(
+          padding: const EdgeInsets.only(left: 95),
+          child: Text(
+            "Düzelt",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ),
       body: homePageBuilder(_tabController),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -65,9 +76,9 @@ class _ProfilePageState extends State<ProfilePage>
         showUnselectedLabels: false,
         showSelectedLabels: false,
         elevation: 0,
-        // ignore: prefer_const_literals_to_create_immutables
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: ""),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
         ],
       ),
@@ -78,9 +89,49 @@ class _ProfilePageState extends State<ProfilePage>
     return Column(
       //crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SizedBox(height: 100),
+        //SizedBox(height: 100),
+        Row(
+          children: [
+            Expanded(
+              child: CircleAvatar(
+                child: Icon(Icons.person),
+                backgroundColor: Colors.grey[100],
+              ),
+            ),
+            Expanded(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text("Hakan Dındış"),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text("Antalya / Kepez"),
+                    SizedBox(width: 10),
+                    Icon(Icons.location_on_outlined),
+                  ],
+                ),
+              ],
+            ))
+          ],
+        ),
+        // ListTile(
+        //   // leading: ,
+        //   title: Text("Hakan Dındış"),
+        //   subtitle: Row(
+        //     crossAxisAlignment: CrossAxisAlignment.end,
+        //     mainAxisAlignment: MainAxisAlignment.end,
+        //     children: [
+        //       Text("Antalya / Kepez"),
+        //       SizedBox(width: 10),
+        //       Icon(Icons.location_on_outlined),
+        //     ],
+        //   ),
+        // ),
+
         Container(
-          //padding: EdgeInsets.only(top: 10),
+          padding: EdgeInsets.only(top: 10),
           child: Align(
             alignment: Alignment.center,
             child: TabBar(
@@ -107,8 +158,8 @@ class _ProfilePageState extends State<ProfilePage>
             child: TabBarView(
               controller: _tabController,
               children: [
-                HomePage(),
-                HomePage(),
+                AktifTab(),
+                CozumTab(),
               ],
             ),
           ),
@@ -148,38 +199,6 @@ class _CirclePainter extends BoxPainter {
     canvas.drawCircle(offset + circleOffset, radius, _paint);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // // ignore_for_file: prefer_const_constructors
 
