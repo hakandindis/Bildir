@@ -10,9 +10,9 @@ class IlceTab extends StatefulWidget {
 
 class _IlceTabState extends State<IlceTab> {
   List<String> descriptions = [
-    "AAA",
-    "BBB",
-    "CCC",
+    "Harmantepe sokak ışıkları birkaç gündür çalışmıyor",
+    "Duvarlarda yosun var",
+    "Yapraklar sokağı kirletmiş",
     "Harmantepe sokak ışıkları birkaç gündür çalışmıyor.",
   ];
 
@@ -26,7 +26,8 @@ class _IlceTabState extends State<IlceTab> {
   ];
 
   List<int> likes = [12, 21, 8, 28];
-  List<int> dislikes = [3, 8, 4, 6];
+  List<int> dislikes = [4, 8, 19, 6];
+  List<bool> seens = [true, false, true, false];
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,7 @@ class _IlceTabState extends State<IlceTab> {
               tags: tags[index],
               like: likes[index],
               dislike: dislikes[index],
+              isSeen: seens[index],
             ),
           );
         },

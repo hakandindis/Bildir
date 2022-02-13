@@ -1,9 +1,7 @@
-// ignore_for_file: unused_local_variable, prefer_const_constructors
+// ignore_for_file: unused_local_variable, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:react/source/pages/home/home_page.dart';
 import 'package:react/source/pages/home/tabs/search_tab.dart';
-import 'package:react/source/pages/profile_page.dart';
 import 'package:react/source/router/route.dart';
 
 class SearchPage extends StatefulWidget {
@@ -74,7 +72,8 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
         selectedFontSize: 0,
         iconSize: 40,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color.fromARGB(255, 5, 17, 51),
+        backgroundColor: Color.fromARGB(0, 114, 196, 201),
+
         onTap: onTap,
         currentIndex: currentIndex,
         selectedItemColor: Color.fromARGB(137, 9, 154, 211),

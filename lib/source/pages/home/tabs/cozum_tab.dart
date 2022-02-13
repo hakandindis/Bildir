@@ -21,8 +21,9 @@ class _CozumTabState extends State<CozumTab> {
     ["#trabzon", "#antalya", "#ankara"],
   ];
 
-  List<int> likes = [12, 21, 8, 28];
-  List<int> dislikes = [3, 8, 4, 6];
+  List<int> likes = [12, 21, 13, 14];
+  List<int> dislikes = [5, 10, 5, 5];
+  List<bool> seens = [true, true, true, true];
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +44,7 @@ class _CozumTabState extends State<CozumTab> {
               tags: tags[index],
               like: likes[index],
               dislike: dislikes[index],
+              isSeen: seens[index],
             ),
           );
         },

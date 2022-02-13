@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:react/source/pages/home/widgets/post_card.dart';
 
@@ -9,7 +11,12 @@ class SearchTab extends StatefulWidget {
 }
 
 class _SearchTabState extends State<SearchTab> {
-  List<String> descriptions = ["AAA", "BBB", "CCC", "DDD"];
+  List<String> descriptions = [
+    "Mazgallar tıkalı",
+    "Saldırgan köpekler var",
+    "yosun tutmuş",
+    "Etrafta kötü bir koku var",
+  ];
 
   List<String> imgPaths = ["3.jpg", "7.jpg", "10.jpg", "11.jpg"];
 
@@ -21,8 +28,9 @@ class _SearchTabState extends State<SearchTab> {
     ["#trabzon", "#antalya", "#ankara"],
   ];
 
-  List<int> likes = [12, 21, 8, 28];
+  List<int> likes = [12, 21, 13, 21];
   List<int> dislikes = [3, 8, 4, 6];
+  List<bool> seens = [true, false, true, false];
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +51,7 @@ class _SearchTabState extends State<SearchTab> {
               tags: tags[index],
               like: likes[index],
               dislike: dislikes[index],
+              isSeen: seens[index],
             ),
           );
         },

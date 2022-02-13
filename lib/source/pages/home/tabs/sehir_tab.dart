@@ -9,7 +9,12 @@ class SehirTab extends StatefulWidget {
 }
 
 class _SehirTabState extends State<SehirTab> {
-  List<String> descriptions = ["AAA", "BBB", "CCC", "DDD"];
+  List<String> descriptions = [
+    "Mazgallar tıkalı",
+    "Çevrede saldırgan köpekler var",
+    "Yosun tutmuş",
+    "Kötü bir koku geliyor",
+  ];
 
   List<String> imgPaths = ["3.jpg", "7.jpg", "10.jpg", "11.jpg"];
 
@@ -21,8 +26,9 @@ class _SehirTabState extends State<SehirTab> {
     ["#trabzon", "#antalya", "#ankara"],
   ];
 
-  List<int> likes = [12, 21, 8, 28];
-  List<int> dislikes = [3, 8, 4, 6];
+  List<int> likes = [14, 21, 4, 28];
+  List<int> dislikes = [3, 8, 13, 6];
+  List<bool> seens = [true, false, true, false];
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +49,7 @@ class _SehirTabState extends State<SehirTab> {
               tags: tags[index],
               like: likes[index],
               dislike: dislikes[index],
+              isSeen: seens[index],
             ),
           );
         },

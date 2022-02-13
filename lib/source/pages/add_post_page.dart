@@ -20,7 +20,6 @@ class _AddPostPageState extends State<AddPostPage> {
   late final TextEditingController _descriptionController;
   late final TextEditingController _tagController;
   bool isAdd = false;
-  bool _enable = true;
 
   List<String> tags = [];
 

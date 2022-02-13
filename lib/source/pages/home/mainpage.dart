@@ -53,9 +53,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         elevation: 0.1,
         backgroundColor: Colors.grey[100],
         title: Padding(
-          padding: const EdgeInsets.only(left: 95),
+          padding: const EdgeInsets.only(left: 160),
           child: Text(
-            "Düzelt",
+            "Bildir",
             style: TextStyle(color: Colors.black),
           ),
         ),
@@ -72,7 +72,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         selectedFontSize: 0,
         iconSize: 40,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color.fromARGB(255, 5, 17, 51),
+        backgroundColor: Color.fromARGB(0, 114, 196, 201),
         onTap: onTap,
         currentIndex: currentIndex,
         selectedItemColor: Color.fromARGB(137, 9, 154, 211),

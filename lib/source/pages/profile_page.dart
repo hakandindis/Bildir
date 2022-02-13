@@ -51,7 +51,7 @@ class _ProfilePageState extends State<ProfilePage>
         title: Padding(
           padding: const EdgeInsets.only(left: 95),
           child: Text(
-            "Düzelt",
+            "Bildir",
             style: TextStyle(color: Colors.black),
           ),
         ),
@@ -68,7 +68,7 @@ class _ProfilePageState extends State<ProfilePage>
         selectedFontSize: 0,
         iconSize: 40,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color.fromARGB(255, 5, 17, 51),
+        backgroundColor: Color.fromARGB(0, 114, 196, 201),
         onTap: onTap,
         currentIndex: currentIndex,
         selectedItemColor: Color.fromARGB(137, 9, 154, 211),
@@ -85,52 +85,65 @@ class _ProfilePageState extends State<ProfilePage>
     );
   }
 
-  Column homePageBuilder(TabController _tabController) {
+  Widget homePageBuilder(TabController _tabController) {
     return Column(
-      //crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        //SizedBox(height: 100),
-        Row(
-          children: [
-            Expanded(
-              child: CircleAvatar(
-                child: Icon(Icons.person),
-                backgroundColor: Colors.grey[100],
-              ),
-            ),
-            Expanded(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text("Hakan Dındış"),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text("Antalya / Kepez"),
-                    SizedBox(width: 10),
-                    Icon(Icons.location_on_outlined),
-                  ],
-                ),
-              ],
-            ))
-          ],
-        ),
-        // ListTile(
-        //   // leading: ,
-        //   title: Text("Hakan Dındış"),
-        //   subtitle: Row(
-        //     crossAxisAlignment: CrossAxisAlignment.end,
-        //     mainAxisAlignment: MainAxisAlignment.end,
-        //     children: [
-        //       Text("Antalya / Kepez"),
-        //       SizedBox(width: 10),
-        //       Icon(Icons.location_on_outlined),
-        //     ],
-        //   ),
-        // ),
-
         Container(
+          padding: const EdgeInsets.all(15),
+          margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+          //width: MediaQuery.of(context).size.width,
+          //height: MediaQuery.of(context).size.height * 0.2,
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              //bottom right shadow is darker
+              BoxShadow(
+                color: Colors.grey.shade500,
+                offset: Offset(4, 4),
+                blurRadius: 15,
+                spreadRadius: 1,
+              ),
+              //top left shadow is lighter
+              BoxShadow(
+                color: Colors.white,
+                offset: Offset(-4, -4),
+                blurRadius: 15,
+                spreadRadius: 1,
+              ),
+            ],
+          ),
+          child: Row(
+            children: [
+              // Expanded(
+              //   child: CircleAvatar(
+              //     child: Icon(Icons.person),
+              //     backgroundColor: Colors.grey[100],
+              //   ),
+              // ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text("Antalya / Kepez"),
+                      SizedBox(width: 10),
+                      Icon(Icons.location_on_outlined),
+                      SizedBox(width: 20),
+                      Text("Ankara / Ulus"),
+                      SizedBox(width: 10),
+                      Icon(Icons.location_on_outlined),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 10),
           padding: EdgeInsets.only(top: 10),
           child: Align(
             alignment: Alignment.center,
@@ -154,6 +167,7 @@ class _ProfilePageState extends State<ProfilePage>
           //width: MediaQuery.of(context).size.width,
           //height: MediaQuery.of(context).size.height,
           child: Container(
+            margin: const EdgeInsets.only(top: 10),
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
             child: TabBarView(
               controller: _tabController,

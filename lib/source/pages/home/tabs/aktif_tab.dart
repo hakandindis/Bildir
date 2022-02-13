@@ -9,7 +9,12 @@ class AktifTab extends StatefulWidget {
 }
 
 class _AktifTabState extends State<AktifTab> {
-  List<String> descriptions = ["AAA", "BBB", "CCC", "DDD"];
+  List<String> descriptions = [
+    "Mazgallar tıkalı",
+    "Saldırgan köpekler var",
+    "yosun tutmuş",
+    "Etrafta kötü bir koku var",
+  ];
 
   List<String> imgPaths = ["3.jpg", "7.jpg", "10.jpg", "11.jpg"];
 
@@ -21,8 +26,9 @@ class _AktifTabState extends State<AktifTab> {
     ["#trabzon", "#antalya", "#ankara"],
   ];
 
-  List<int> likes = [12, 21, 8, 28];
-  List<int> dislikes = [3, 8, 4, 6];
+  List<int> likes = [12, 1, 8, 28];
+  List<int> dislikes = [3, 15, 4, 6];
+  List<bool> seens = [true, true, true, false];
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +49,7 @@ class _AktifTabState extends State<AktifTab> {
               tags: tags[index],
               like: likes[index],
               dislike: dislikes[index],
+              isSeen: seens[index],
             ),
           );
         },

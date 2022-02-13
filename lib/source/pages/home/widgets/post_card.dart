@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'dart:io';
 
@@ -14,6 +14,8 @@ class PostCard extends StatefulWidget {
     this.index,
     this.like,
     this.dislike,
+    this.isSeen,
+    this.isSolved,
   }) : super(key: key);
 
   File? imageFile;
@@ -23,6 +25,8 @@ class PostCard extends StatefulWidget {
   int? index;
   int? like;
   int? dislike;
+  bool? isSeen;
+  bool? isSolved;
 
   @override
   _PostCardState createState() => _PostCardState();
@@ -61,22 +65,41 @@ class _PostCardState extends State<PostCard> {
           widget.imageFile != null
               ? Image.file(widget.imageFile!,
                   fit: BoxFit.fitWidth, height: 200, width: 200)
-              : Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12)),
-                    image: DecorationImage(
-                      image: AssetImage("img/${widget.imagePath!}"),
-                      fit: BoxFit.cover,
+              : Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(12),
+                            topRight: Radius.circular(12)),
+                        image: DecorationImage(
+                          image: AssetImage("img/${widget.imagePath!}"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      // child: Image.asset(
+                      //   "img/${widget.imagePath!}",
+                      //   fit: BoxFit.cover,
+                      //   height: MediaQuery.of(context).size.height * 0.5,
+                      // ),
                     ),
-                  ),
-                  // child: Image.asset(
-                  //   "img/${widget.imagePath!}",
-                  //   fit: BoxFit.cover,
-                  //   height: MediaQuery.of(context).size.height * 0.5,
-                  // ),
+                    if (widget.isSeen!)
+                      Icon(
+                        Icons.shield_rounded,
+                        color: (widget.like! >= widget.dislike! * 2)
+                            ? Colors.grey
+                            : Colors.green,
+                        size: 50,
+                      )
+                    else
+                      Icon(
+                        Icons.shield_rounded,
+                        color: Colors.grey,
+                        size: 50,
+                      )
+                  ],
                 ),
           // CircleAvatar(backgroundImage: AssetImage(widget.imagePath!)),
           Padding(
@@ -138,6 +161,21 @@ class _PostCardState extends State<PostCard> {
                       //   onPressed: () {},
                       //   icon: Icon(Icons.access_alarms, size: 30),
                       // ),
+                      (widget.like! >= widget.dislike! * 2)
+                          ? Text(
+                              "Çözüldüğü konuşuluyor",
+                              style: TextStyle(
+                                color: Colors.blue[300],
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          : Text(
+                              "Devam ettiği konuşuluyor",
+                              style: TextStyle(
+                                color: Colors.red[300],
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                       IconButton(
                         onPressed: () {},
                         icon: Icon(Icons.location_on_outlined, size: 30),

@@ -12,8 +12,8 @@ class _OneriTabState extends State<OneriTab> {
   List<String> descriptions = [
     "Kepez ilçesi 2617 sokaktaki mazgallar tıkalı",
     "Çünürde lağım kokusu var. Çevreye zarar veriyor.",
-    "CCC",
-    "DDD",
+    "Mazgallar tıkalı",
+    "Trafik ışıklarında sorun var",
   ];
 
   List<String> imgPaths = ["1.jpg", "2.jpg", "3.jpg", "4.jpg"];
@@ -26,8 +26,9 @@ class _OneriTabState extends State<OneriTab> {
     ["#trabzon", "#antalya", "#ankara"],
   ];
 
-  List<int> likes = [12, 21, 8, 28];
-  List<int> dislikes = [3, 8, 4, 6];
+  List<int> likes = [3, 17, 4, 28];
+  List<int> dislikes = [12, 8, 17, 6];
+  List<bool> seens = [true, false, true, false];
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +49,7 @@ class _OneriTabState extends State<OneriTab> {
               tags: tags[index],
               like: likes[index],
               dislike: dislikes[index],
+              isSeen: seens[index],
             ),
           );
         },

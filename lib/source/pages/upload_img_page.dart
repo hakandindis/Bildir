@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_returning_null_for_void, avoid_print
+// ignore_for_file: avoid_returning_null_for_void, avoid_print, prefer_const_constructors
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';

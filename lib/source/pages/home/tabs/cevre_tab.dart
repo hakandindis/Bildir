@@ -11,9 +11,9 @@ class CevreTab extends StatefulWidget {
 class _CevreTabState extends State<CevreTab> {
   List<String> descriptions = [
     "Gültepe mahallesinde sokak ışıkları birkaç gündür çalışmıyor.",
-    "BBB",
+    "Kaldırım kırılmış",
     "Nurtepe mahallesinde sokak köpekleri arasında hastalanmış olanlar var ve saldırganlar.",
-    "DDD",
+    "Nehrin kenarında per şişeleri var",
   ];
 
   List<String> imgPaths = ["5.jpg", "6.jpg", "7.jpg", "8.jpg"];
@@ -25,8 +25,9 @@ class _CevreTabState extends State<CevreTab> {
     ["#trabzon", "#antalya", "#ankara"],
   ];
 
-  List<int> likes = [12, 21, 8, 28];
-  List<int> dislikes = [3, 8, 4, 6];
+  List<int> likes = [12, 13, 9, 7];
+  List<int> dislikes = [3, 30, 4, 21];
+  List<bool> seens = [true, true, true, false];
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,7 @@ class _CevreTabState extends State<CevreTab> {
               tags: tags[index],
               like: likes[index],
               dislike: dislikes[index],
+              isSeen: seens[index],
             ),
           );
         },
