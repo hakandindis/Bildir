@@ -47,26 +47,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
 
   Scaffold homePageBuild(TabController _tabController, BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   elevation: 0.1,
-      //   backgroundColor: Colors.grey[100],
-      //   title: Padding(
-      //     padding: const EdgeInsets.only(left: 95),
-      //     child: Text(
-      //       "Düzelt",
-      //       style: TextStyle(color: Colors.black),
-      //     ),
-      //   ),
-      // ),
-      //------------------------------------------------------------------
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Navigator.of(context).pushNamed(AppRoutes.addPostPage);
-      //   },
-      //   child: Icon(Icons.add_a_photo_outlined),
-      // ),
       body: homePageBuilder(_tabController),
-
       bottomNavigationBar: BottomNavigationBar(
         unselectedFontSize: 0,
         selectedFontSize: 0,
