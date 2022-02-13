@@ -6,7 +6,6 @@ import 'package:react/source/pages/home/home_page.dart';
 import 'package:react/source/pages/home/mainpage.dart';
 import 'package:react/source/pages/profile_page.dart';
 import 'package:react/source/pages/search_page.dart';
-import 'package:react/source/pages/upload_img_page.dart';
 
 class AppRoutes {
   static const String homePage = "/homePage";
@@ -21,7 +20,6 @@ class AppRoutes {
       homePage: (context) => HomePage(),
       profilePage: (context) => ProfilePage(),
       addPostPage: (context) => AddPostPage(),
-      uploadPage: (context) => UploadPage(),
       mainPage: (context) => MainPage(),
       searchPage: (context) => SearchPage(),
     };
